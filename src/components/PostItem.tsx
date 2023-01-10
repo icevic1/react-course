@@ -9,7 +9,7 @@ import {IPostItemProps} from "app-interfaces";
 
 // const PostItem = (props: {idx: number, post: { id?: number, title: string, content: any } }) => {
 const PostItem = (props: IPostItemProps) => {
-  console.log("props PostItem: ", props);
+  // console.log("props PostItem: ", props);
 
   return (
     <div className="post">

@@ -15,7 +15,7 @@ declare module 'app-interfaces' {
     id: number;
     title: string;
     content: any;
-    // [x: string]: any;
+    [x: string]: any;
   }
 
   export interface IPostItemProps {

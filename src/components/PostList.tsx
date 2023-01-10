@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PostItem from "./PostItem";
 
 const PostList = (props: {posts: Array<any>, title: string}) => {
-  console.log("props: ", props);
+  // console.log("props: ", props);
 
   return (
     <div className="postList">
