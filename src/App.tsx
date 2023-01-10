@@ -30,7 +30,14 @@ function App() {
     <PostForm cbCreate={createPost} />
 
     <hr style={{margin: '10px'}} />
-    <PostList remove={removePost} posts={posts} title={'My first post list'} />
+    {
+      posts?.length
+        ?
+        <PostList remove={removePost} posts={posts} title={'Post list'} />
+        :
+        <h3 style={{textAlign: 'center'}} title="Empty posts list">(empty)</h3>
+    }
+
 
     <h2>from input: {value}</h2>
     <input type="text" value={value} onChange={event => setValue(event.target.value)} />
