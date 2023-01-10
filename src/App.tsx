@@ -20,12 +20,17 @@ function App() {
     setPosts([...posts, {...post, id: Date.now()}])
   }
 
+  const removePost = (post: IPostItem) => {
+    console.log("createPost cb: ", post);
+    setPosts(posts.filter((p: IPostItem) => p.id !== post.id) )
+  }
 
   return <div className="App">
 
-    <PostForm cbCreate={createPost}/>
+    <PostForm cbCreate={createPost} />
 
     <hr style={{margin: '10px'}} />
+    <PostList remove={removePost} posts={posts} title={'My first post list'} />
 
     <h2>from input: {value}</h2>
     <input type="text" value={value} onChange={event => setValue(event.target.value)} />
@@ -33,7 +38,7 @@ function App() {
     <Counter/>
     <hr/>
 
-    <PostList posts={posts} title={'My first post list'} />
+
 
     {/*<PostItem post={{
       id: 222,

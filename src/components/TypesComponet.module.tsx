@@ -20,7 +20,8 @@ declare module 'app-interfaces' {
 
   export interface IPostItemProps {
     idx: number;
+    remove: (e: any) => void;
     post: { id?: number, title: string, content: any };
-    // [x: string]: any;
+    [x: string]: any;
   }
 }

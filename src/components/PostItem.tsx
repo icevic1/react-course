@@ -1,5 +1,6 @@
 import React from 'react';
 import {IPostItemProps} from "app-interfaces";
+import SaveButton from "./UI/buttons/SaveButton";
 
 /*interface IPostItemProps {
   idx: number;
@@ -18,7 +19,7 @@ const PostItem = (props: IPostItemProps) => {
         <div>{props.post.content} </div>
       </div>
       <div className="post__btns">
-        <button>Delete</button>
+        <SaveButton onClick={() => props.remove(props.post)}>Delete</SaveButton>
       </div>
     </div>
   );
