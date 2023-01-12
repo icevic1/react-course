@@ -11,6 +11,16 @@ declare module 'app-interfaces' {
     [x: string]: any;
   }
 
+  export interface IPropsSelect {
+    defaultValue?: string;
+    options?: Array<{ label: string, value: any }>;
+    value?: any;
+    onChange?: any;
+    disabled?: boolean;
+
+    // All other props
+    [x: string]: any;
+  }
   export interface IPostItem {
     id: number;
     title: string;

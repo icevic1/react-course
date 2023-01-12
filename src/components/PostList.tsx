@@ -4,6 +4,11 @@ import {IPostItem} from "app-interfaces";
 
 const PostList = (props: {posts: Array<any>, remove: (p: IPostItem) => void, title: string}) => {
   // console.log("props: ", props);
+  if (!props.posts.length) {
+    return (
+      <h3 style={{textAlign: 'center'}} title="Empty posts list">(empty)</h3>
+    )
+  }
 
   return (
     <div className="postList">
