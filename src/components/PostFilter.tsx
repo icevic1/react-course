@@ -12,14 +12,14 @@ const PostFilter = ({filter, onChange, ...props}: any) => {
   ])
 
   return (
-    <div style={{margin: '10px'}}>
-      <SelectCustom
+    <div style={{margin: '10px'}} {...props}>
+      <SelectCustom style={{padding: '2px 4px'}}
         value={filter.sortType}
         onChange={event => onChange({...filter, sortType: event})}
         options={sortOptions}
         defaultValue={ '--Sort By--' } />
 
-      <FormInputText type="text" placeholder="keywords..."
+      <FormInputText type="text" placeholder="keywords..." style={{padding: '2px 4px'}}
                      value={filter.filterQuery}
                      onChange={(event: any) =>  onChange({...filter, filterQuery: event.target.value}) }/>
     </div>
