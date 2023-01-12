@@ -19,3 +19,35 @@
   justify-content: space-between;
   align-items: center;
 }
+.postList {
+  margin: 10px;
+}
+
+
+form.postForm {
+  margin: 10px;
+}
+form.postForm input {
+  margin-right: 5px;
+  padding: 2px;
+  border: 1px solid darkgreen;
+}
+/* post list effects */
+.post-enter {
+  opacity: 0;
+  transform: translateX(-350px);
+}
+.post-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 200ms ease-in;
+}
+.post-exit {
+  opacity: 1;
+}
+.post-exit-active {
+  opacity: 0;
+  transform: translateX(-350px);
+  transition: all 200ms ease-in;
+}
+/* end */

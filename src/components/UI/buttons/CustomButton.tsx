@@ -1,9 +1,9 @@
 import React, {ReactNode, useState} from 'react';
-import classes from './SaveButon.module.css'
+import classes from './CustomButton.module.css'
 import {IPropsButton} from "app-interfaces";
 
 export default ({children, ...props}: IPropsButton): any => (
-  <button {...props} className={classes.saveButton}>
+  <button {...props} className={classes.customButton}>
     {children}
   </button>
 )

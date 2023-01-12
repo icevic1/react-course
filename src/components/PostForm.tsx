@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import FormInputText from "./UI/inputs/FormInputText";
-import SaveButton from "./UI/buttons/SaveButton";
+import CustomButton from "./UI/buttons/CustomButton";
 import {IPostItem} from "app-interfaces";
 
 const PostForm = ({cbCreate}: {cbCreate: (p: IPostItem) => void;}) => {
@@ -15,7 +15,7 @@ const PostForm = ({cbCreate}: {cbCreate: (p: IPostItem) => void;}) => {
   }
 
   return (
-    <form style={{margin: '10px'}}>
+    <form className={'postForm'}>
       <FormInputText type="text" placeholder="Post Title"
                      value={post.title}
                      onChange={(event: any) => setPost({...post, title: event.target.value})}/>
@@ -24,7 +24,7 @@ const PostForm = ({cbCreate}: {cbCreate: (p: IPostItem) => void;}) => {
                      onChange={(event: any) => setPost({...post, content: event.target.value})}/>
       {/*<FormInputText ref={inputPostBodyValue} type="text" placeholder="Post Body" />*/}
       {/*<input ref={inputPostBodyValue} type="text" placeholder="Post Body"/>*/}
-      <SaveButton onClick={addNewPost} >ADD New</SaveButton>
+      <CustomButton onClick={addNewPost} >Save</CustomButton>
 
     </form>
   );
