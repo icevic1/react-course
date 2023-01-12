@@ -12,7 +12,9 @@ const PostList = (props: {posts: Array<any>, remove: (p: IPostItem) => void, tit
 
   return (
     <div className="postList">
-      <h3 style={{textAlign: 'center'}}>{props.title}</h3>
+      <h3 style={{textAlign: 'center'}}>
+        {props.title}
+      </h3>
       {props.posts.map(
         (post, idx: number) =>
           <PostItem

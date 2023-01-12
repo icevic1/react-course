@@ -4,21 +4,15 @@ import "./styles/App.css"
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
 import {IPostItem} from "app-interfaces";
-import SelectCustom from "./components/UI/select/SelectCustom";
-import FormInputText from "./components/UI/inputs/FormInputText";
+import PostFilter from "./components/PostFilter";
 
 function App() {
   const [value, setValue] = useState('default text!!!')
-  const [searchInputValue, setSearchInputValue] = useState('')
-  const [selectedSort, setSelectedSort] = useState('')
+  const [postsFilterAndSort, setPostsFilterAndSort] = useState({filterQuery: '', sortType: ''})
 
   const [posts, setPosts] = useState([
     { id: 1, title: "a 111", content: 'b content from object' },
     { id: 2, title: "b 222", content: 'a content from object' },
-  ])
-  const [sortOptions, setSortOption] = useState([
-    { label: "By Title", value: 'title' },
-    { label: "By Content", value: 'content' },
   ])
 
   const createPost = (post: IPostItem) => {
@@ -30,53 +24,29 @@ function App() {
     console.log("createPost cb: ", post);
     setPosts(posts.filter((p: IPostItem) => p.id !== post.id) )
   }
-/*  const sortPosts = (sortType) => {
-    setSelectedSort(sortType)
-    console.log("sortPosts cb: ", sortType);
-    // setPosts(posts.filter((p: IPostItem) => p.id !== post.id) )
-    setPosts([...posts].sort((a, b) => a[sortType].localeCompare(b[sortType])))
-  }*/
 
   const sortedPost = useMemo(() => {
-    console.log("sortedPost(): ", selectedSort);
-    return !!selectedSort
-      ? [...posts].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
+    console.log("sortedPost(): ", postsFilterAndSort.sortType);
+    return !!postsFilterAndSort.sortType
+      ? [...posts].sort((a, b) => a[postsFilterAndSort.sortType].localeCompare(b[postsFilterAndSort.sortType]))
       : posts
-  }, [selectedSort, posts])
-
-/*  const searchPosts = (keyword) => {
-    console.log("searchPosts cb: ", keyword);
-    setSearchInputValue(keyword)
-    !!keyword &&
-    setPosts([...posts].filter((post) => post.title.toLowerCase().includes(keyword.toLowerCase())) )
-  }*/
+  }, [postsFilterAndSort.sortType, posts])
 
   const filteredPost = useMemo(() => {
-    console.log("filteredPost(): ", searchInputValue);
+    console.log("filteredPost(): ", postsFilterAndSort.filterQuery);
 
-    return !!searchInputValue
-      ? [...sortedPost].filter((post) => post.title.toLowerCase().includes(searchInputValue.toLowerCase()))
+    return !!postsFilterAndSort.filterQuery
+      ? [...sortedPost].filter((post) => post.title.toLowerCase().includes(postsFilterAndSort.filterQuery.toLowerCase()))
       : sortedPost
 
-  }, [searchInputValue, sortedPost])
-
-
+  }, [postsFilterAndSort.filterQuery, sortedPost])
 
 
   return <div className="App">
     <PostForm cbCreate={createPost} />
 
-    <div style={{margin: '10px'}}>
-      <SelectCustom
-        value={selectedSort}
-        onChange={event => setSelectedSort(event)}
-        options={sortOptions}
-        defaultValue={ '--Sort By--' } />
-
-      <FormInputText type="text" placeholder="keywords..."
-                     value={searchInputValue}
-                     onChange={(event: any) => setSearchInputValue(event.target.value)}/>
-    </div>
+    <PostFilter filter={postsFilterAndSort}
+                onChange={setPostsFilterAndSort}/>
 
     <hr style={{margin: '10px'}} />
 
