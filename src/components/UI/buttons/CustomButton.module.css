@@ -1,6 +1,7 @@
 .customButton {
-  padding: 2px;
+  padding: 2px 4px;
   color: teal;
   background: transparent;
   border: 1px solid darkgreen;
+  border-radius: 3px;
 }

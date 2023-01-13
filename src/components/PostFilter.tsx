@@ -13,7 +13,7 @@ const PostFilter = ({filter, onChange, ...props}: any) => {
 
   return (
     <div style={{margin: '10px'}} {...props}>
-      <SelectCustom style={{padding: '2px 4px'}}
+      <SelectCustom style={{padding: '2px 4px', marginRight: 5}}
         value={filter.sortType}
         onChange={event => onChange({...filter, sortType: event})}
         options={sortOptions}
